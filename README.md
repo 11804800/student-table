@@ -1,50 +1,61 @@
-# React + TypeScript + Vite
+# Student Data Viewer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive web application for displaying student data using **React**, **TypeScript**, **Tailwind CSS**, and the **shadcn/ui** library. The app supports both desktop and mobile views, with paginated data and a clean, modular codebase.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Responsive Design**: 
+  - Desktop view displays data in a table format.
+  - Mobile view displays data as individual cards.
+- **Pagination**: Navigate through student data with ease (10 students per page).
+- **Shadcn UI Components**: Elegant and reusable UI powered by the shadcn/ui Data Table.
+- **TypeScript**: Provides type safety and improved code quality.
+- **Mock API**: Data is fetched using a simulated API call.
+- **Tailwind CSS**: Modern, utility-first styling for a visually appealing design.
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tech Stack
 
-- Configure the top-level `parserOptions` property like this:
+- **Framework**: React (with Vite)
+- **Language**: TypeScript
+- **UI Library**: shadcn/ui
+- **Styling**: Tailwind CSS
+- **Data Handling**: Mock JSON data and simulated API
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## Setup and Installation
+
+
+### Installation Steps
+1. **Clone the repository**:
+   ```bash
+   git clone [https://github.com/11804800/student-table.git]
+   cd student-table
+   ```
+
+Install dependencies
+
+```bash
+  npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Start the server
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+  npm run dev
+```
+```bash
+ src/
+├── pages/
+│   ├── StudentTable.tsx  # Desktop table view
+│   ├── PageNavigation.tsx    # Pagination component
+├──/
+utils.tsx    # Mock API function
+├── data/
+├──students.json         # Mock data file
+├── App.tsx               # Main application component
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
