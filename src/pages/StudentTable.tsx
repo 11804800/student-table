@@ -1,89 +1,43 @@
 import {
     Table,
     TableBody,
-    TableCaption,
     TableCell,
-    TableFooter,
     TableHead,
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
 
-const invoices = [
-    {
-        invoice: "INV001",
-        paymentStatus: "Paid",
-        totalAmount: "$250.00",
-        paymentMethod: "Credit Card",
-    },
-    {
-        invoice: "INV002",
-        paymentStatus: "Pending",
-        totalAmount: "$150.00",
-        paymentMethod: "PayPal",
-    },
-    {
-        invoice: "INV003",
-        paymentStatus: "Unpaid",
-        totalAmount: "$350.00",
-        paymentMethod: "Bank Transfer",
-    },
-    {
-        invoice: "INV004",
-        paymentStatus: "Paid",
-        totalAmount: "$450.00",
-        paymentMethod: "Credit Card",
-    },
-    {
-        invoice: "INV005",
-        paymentStatus: "Paid",
-        totalAmount: "$550.00",
-        paymentMethod: "PayPal",
-    },
-    {
-        invoice: "INV006",
-        paymentStatus: "Pending",
-        totalAmount: "$200.00",
-        paymentMethod: "Bank Transfer",
-    },
-    {
-        invoice: "INV007",
-        paymentStatus: "Unpaid",
-        totalAmount: "$300.00",
-        paymentMethod: "Credit Card",
-    },
-]
 
 function StudentTable({students}:{students:any}) {
-    console.log(students);
     return (
-        <div className="w-[80%]">
-            <Table>
-                <TableCaption>A list of your recent invoices.</TableCaption>
-                <TableHeader>
+        <div className="w-[95%] xl:w-[90%]">
+            <Table className="border rounded-md shadow-sm">
+                <TableHeader className="bg-zinc-100">
                     <TableRow>
-                        <TableHead className="w-[100px]">Invoice</TableHead>
-                        <TableHead>Status</TableHead>
-                        <TableHead>Method</TableHead>
-                        <TableHead className="text-right">Amount</TableHead>
+                        <TableHead >Name</TableHead>
+                        <TableHead>Age</TableHead>
+                        <TableHead>Marks</TableHead>
+                        <TableHead >Avg Marks</TableHead>
+                        <TableHead>Roll Number</TableHead>
+                        <TableHead >Class</TableHead>
+                        <TableHead >City</TableHead>
+                        <TableHead>Attendence</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {invoices.map((invoice) => (
-                        <TableRow key={invoice.invoice}>
-                            <TableCell className="font-medium">{invoice.invoice}</TableCell>
-                            <TableCell>{invoice.paymentStatus}</TableCell>
-                            <TableCell>{invoice.paymentMethod}</TableCell>
-                            <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+                    {students.map((item:any,index:number) => (
+                        <TableRow key={index} className={`${index%2!=0 && "bg-blue-100"} text-sm`}>
+                            <TableCell className="font-medium">{item?.name}</TableCell>
+                            <TableCell className="text-[12px] font-medium">{item?.age}</TableCell>
+                            <TableCell className="text-[12px] font-medium">{item?.marks}</TableCell>
+                            <TableCell  className="text-[12px] font-medium" >{item?.avgMarks}</TableCell>
+                            <TableCell className="text-[12px] font-medium">{item?.rollNumber}</TableCell>
+                            <TableCell className="text-[12px] font-medium">{item?.class}</TableCell>
+                            <TableCell className="text-[12px] font-medium">{item?.city}</TableCell>
+                            <TableCell className="text-[12px] font-medium">{item?.attendance}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
-                <TableFooter>
-                    <TableRow>
-                        <TableCell colSpan={3}>Total</TableCell>
-                        <TableCell className="text-right">$2,500.00</TableCell>
-                    </TableRow>
-                </TableFooter>
             </Table>
         </div>
     )
