@@ -40,6 +40,7 @@ function App() {
   {
     return (
       <div className="flex flex-col justify-center items-center w-full h-screen p-4 gap-5">
+        <h1 className="font-medium text-xl">Student Data</h1>
         {
           dataLoading ?
           <div className="w-full h-[70%] flex justify-center items-center font-medium text-md">
