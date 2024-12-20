@@ -1,39 +1,35 @@
 import {
-    Pagination,
-    PaginationContent,
-    PaginationEllipsis,
-    PaginationItem,
-    PaginationLink,
-    PaginationNext,
-    PaginationPrevious,
-  } from "@/components/ui/pagination"
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
 
-function PageNavigation() {
+function PageNavigation({ setCurrentPage, totalPages, currentPage }: { setCurrentPage: any, totalPages: number, currentPage: number }) {
+  const Pages: number[] = Array.from({ length: totalPages }, (_, i) => i + 1);
   return (
     <Pagination>
-    <PaginationContent>
-      <PaginationItem>
-        <PaginationPrevious href="#" />
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#">1</PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#" isActive>
-          2
-        </PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#">3</PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationEllipsis />
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationNext href="#" />
-      </PaginationItem>
-    </PaginationContent>
-  </Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious href="#"  onClick={()=>setCurrentPage(currentPage--)} />
+        </PaginationItem>
+        {
+          Pages.map((item: number) => {
+            return (
+              <PaginationItem key={item} onClick={()=>setCurrentPage(item)}>
+                <PaginationLink href="#" isActive={currentPage==item}>{item}</PaginationLink>
+              </PaginationItem>
+            )
+          })
+        }
+        <PaginationItem>
+          <PaginationNext href="#" onClick={()=>setCurrentPage(currentPage++)} />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
   )
 }
 
